@@ -19,7 +19,11 @@ export default async function Home() {
 
   return (
     <div className="h-screen">
-      <VenuesMap/>
+      <VenuesMap
+          gapi_key={process.env.GAPI_KEY}
+          gmap_id={process.env.GMAP_ID}
+          venues={selectItemsResponse.Items}
+      />
     </div>
   );
 }
