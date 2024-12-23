@@ -15,8 +15,7 @@ export default async function Home() {
     Statement: 'SELECT * FROM venues'
   });
   const selectItemsResponse = await docClient.send(selectItemsStatementCommand);
-  console.log(`Got item(s): ${JSON.stringify(selectItemsResponse.Items[0])}`);
-
+  console.log(`Got item(s): ${JSON.stringify(selectItemsResponse.Items[32])}`);
 
   return (
     <div className="h-screen">

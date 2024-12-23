@@ -4,7 +4,7 @@ import {APIProvider, Map, MapCameraChangedEvent} from '@vis.gl/react-google-maps
 export default function VenuesMap() {
   return (
     <APIProvider
-        apiKey={'AIzaSyCUWVZ7sLZmBd_rBXiSyFzn5cgUmKDYlQQ'}
+        apiKey={'Google Maps API Key here'}
         onLoad={() => console.log('Maps API has loaded.')}>
       <Map
          defaultZoom={13}
