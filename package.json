@@ -11,7 +11,11 @@
   "dependencies": {
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "next": "15.0.3"
+    "next": "15.0.3",
+    "@aws-sdk/client-dynamodb": "^3.210.0",
+    "@aws-sdk/lib-dynamodb": "^3.210.0",
+    "@googlemaps/markerclusterer": "^2.5.1",
+    "@vis.gl/react-google-maps": "latest"
   },
   "devDependencies": {
     "typescript": "^5",
