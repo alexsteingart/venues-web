@@ -59,7 +59,15 @@ const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Venue }>) => {
   )
 }
 
-export default function VenuesMap({ gapi_key, gmap_id, venues }) {
+export default function VenuesMap({
+  gapi_key,
+  gmap_id,
+  venues
+}: Readonly<{
+  gapi_key: string,
+  gmap_id: string,
+  venues: Venue[]
+}>) {
   return (
     <APIProvider
         apiKey={gapi_key}>
