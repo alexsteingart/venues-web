@@ -7,8 +7,9 @@ import {
   useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
 import { useState, useCallback } from 'react';
+import { Venue } from '@/app/lib/definitions'
 
-const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: object }>) => {
+const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Venue }>) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
   const [infoWindowShown, setInfoWindowShown] = useState(false);
 
