@@ -28,7 +28,7 @@ const MarkerWithInfoWindow = ({ venue }) => {
         onClick={handleMarkerClick}
       />
       {infoWindowShown && (
-        <InfoWindow anchor={marker}>
+        <InfoWindow anchor={marker} onClose={handleClose}>
           <div className='text-black'>
             <h3 className='text-lg text-blue-600'>
               <a
