@@ -19,3 +19,11 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.gm-style-iw-chr {
+
+}
+
+.gm-style-iw-d {
+  margin-top: -20px;
+}

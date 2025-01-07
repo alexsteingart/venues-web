@@ -30,9 +30,26 @@ const MarkerWithInfoWindow = ({ venue }) => {
       {infoWindowShown && (
         <InfoWindow anchor={marker}>
           <div className='text-black'>
-            <h3>{venue.venue_name}</h3>
-            <p>
+            <h3 className='text-lg text-blue-600'>
+              <a
+                  href={`https://www.google.com/maps/place/?q=${venue.place_id}`}
+                  target='_blank'
+              >
+                {venue.venue_name}
+              </a>
+            </h3>
+            <p className='mb-1'>
               {venue.description}
+            </p>
+            <p>
+              source:&nbsp;
+              {venue.site}&nbsp;
+              <a
+                  href={venue.site_url}
+                  className='text-blue-600'
+                  target='_blank'>
+                {venue.site_title}
+              </a>
             </p>
           </div>
         </InfoWindow>
