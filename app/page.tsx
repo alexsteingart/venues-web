@@ -21,7 +21,7 @@ export default async function Home() {
       <VenuesMap
           gapi_key={process.env.GAPI_KEY}
           gmap_id={process.env.GMAP_ID}
-          venues={selectItemsResponse.Items}
+          venues={selectItemsResponse.Items || []}
       />
     </div>
   );

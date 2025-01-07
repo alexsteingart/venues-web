@@ -7,9 +7,8 @@ import {
   useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
 import { useState, useCallback } from 'react';
-import { Venue } from '@/app/lib/definitions'
 
-const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Venue }>) => {
+const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Record<string, any> }>) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
   const [infoWindowShown, setInfoWindowShown] = useState(false);
 
@@ -66,11 +65,11 @@ export default function VenuesMap({
 }: Readonly<{
   gapi_key: string | undefined,
   gmap_id: string | undefined,
-  venues: Venue[] | undefined
+  venues: Record<string, any>[]
 }>) {
   return (
     <APIProvider
-        apiKey={gapi_key}>
+        apiKey={gapi_key || ''}>
       <Map
         mapId={gmap_id}
          defaultZoom={13}
