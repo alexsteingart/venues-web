@@ -66,7 +66,7 @@ export default function VenuesMap({
 }: Readonly<{
   gapi_key: string | undefined,
   gmap_id: string | undefined,
-  venues: Venue[]
+  venues: Venue[] | undefined
 }>) {
   return (
     <APIProvider
