@@ -61,8 +61,7 @@ const MarkerWithInfoWindow = ({ venue }) => {
 export default function VenuesMap({ gapi_key, gmap_id, venues }) {
   return (
     <APIProvider
-        apiKey={gapi_key}
-        onLoad={() => console.log('Maps API has loaded.')}>
+        apiKey={gapi_key}>
       <Map
         mapId={gmap_id}
          defaultZoom={13}
