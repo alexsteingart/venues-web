@@ -12,12 +12,13 @@
     "@aws-sdk/client-dynamodb": "^3.210.0",
     "@aws-sdk/lib-dynamodb": "^3.210.0",
     "@googlemaps/markerclusterer": "^2.5.1",
+    "@types/lodash": "^4.17.14",
     "@vis.gl/react-google-maps": "latest",
+    "lodash": "4.17.21",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "vercel": "^39.2.6",
-    "lodash": "4.17.21"
+    "vercel": "^39.2.6"
   },
   "devDependencies": {
     "@types/node": "^20",
