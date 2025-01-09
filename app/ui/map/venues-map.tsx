@@ -7,6 +7,7 @@ import {
   useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
 import { useState, useCallback } from 'react';
+import { kebabCase } from 'lodash';
 
 const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Record<string, any> }>) => {
   const [markerRef, marker] = useAdvancedMarkerRef();
@@ -45,7 +46,7 @@ const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Record<string, any> }
               source:&nbsp;
               {venue.site}&nbsp;
               <a
-                  href={venue.site_url}
+                  href={`${venue.site_url}/${kebabCase(venue.venue_name)}`}
                   className='text-blue-600'
                   target='_blank'>
                 {venue.site_title}
