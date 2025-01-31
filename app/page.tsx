@@ -15,7 +15,6 @@ export default async function Home() {
     Statement: 'SELECT * FROM venues'
   });
   const selectItemsResponse = await docClient.send(selectItemsStatementCommand);
-  console.log(selectItemsResponse.Items[22])
 
   return (
     <div className="h-screen">
