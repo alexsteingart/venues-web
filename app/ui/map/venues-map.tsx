@@ -72,7 +72,7 @@ export default function VenuesMap({
   venues: Record<string, any>[]
 }>) {
 
-  const siteSet = new Set()
+  const siteSet = new Set<string>()
   venues.forEach((venue) => {
     siteSet.add(venue.site)
   })
@@ -109,7 +109,7 @@ export default function VenuesMap({
                 }
                 setSites(newSites)
               }}
-              defaultChecked='true' />
+              defaultChecked={true} />
             &nbsp;
             {site}
           </div>
