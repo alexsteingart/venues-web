@@ -13,8 +13,6 @@ import { kebabCase } from 'lodash';
 const MarkerWithInfoWindow = (
   { venue, visible }: Readonly<{ venue: Record<string, any>, visible: boolean }>
 ) => {
-  if(!venue.lat || !venue.lng) return;
-
   const [markerRef, marker] = useAdvancedMarkerRef();
   const [infoWindowShown, setInfoWindowShown] = useState(false);
 
@@ -27,7 +25,7 @@ const MarkerWithInfoWindow = (
 
   return (
     <>
-      {visible && <AdvancedMarker
+      {visible && venue.lat && venue.lng && <AdvancedMarker
         ref={markerRef}
         position={{lat: venue.lat, lng: venue.lng}}
         title={venue.venue_name}
