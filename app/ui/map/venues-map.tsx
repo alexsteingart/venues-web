@@ -9,7 +9,10 @@ import {
 import { useState, useCallback } from 'react';
 import { kebabCase } from 'lodash';
 
+
 const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Record<string, any> }>) => {
+  if(!venue.lat || !venue.lng) return;
+
   const [markerRef, marker] = useAdvancedMarkerRef();
   const [infoWindowShown, setInfoWindowShown] = useState(false);
 
@@ -68,6 +71,13 @@ export default function VenuesMap({
   gmap_id: string | undefined,
   venues: Record<string, any>[]
 }>) {
+
+  const siteSet = new Set()
+  venues.forEach((venue) => {
+    siteSet.add(venue.site)
+  })
+  const [sites, setSites] = useState(siteSet)
+
   return (
     <APIProvider
         apiKey={gapi_key || ''}>
@@ -75,13 +85,37 @@ export default function VenuesMap({
         mapId={gmap_id}
          defaultZoom={13}
          defaultCenter={ { lat: 40.727094, lng: -73.946729 } }>
-         {venues.map( (venue, index) => (
-            <MarkerWithInfoWindow
-              key={index}
-              venue={venue}
-            />
-         ))}
+         {venues.map( (venue, index) => {
+             return sites.has(venue.site) && (
+              <MarkerWithInfoWindow
+                key={index}
+                venue={venue}
+              />
+            )
+         })}
       </Map>
+      <div className='fixed left-0 top-0 bg-white p-2'>
+        {Array.from(siteSet).sort().map((site, index) => (
+          <div key={index}>
+            <input
+              type='checkbox'
+              name='sites'
+              value={site}
+              onChange={(e) => {
+                const newSites = new Set(sites)
+                if(e.target.checked) {
+                  newSites.add(e.target.value)
+                } else {
+                  newSites.delete(e.target.value)
+                }
+                setSites(newSites)
+              }}
+              defaultChecked='true' />
+            &nbsp;
+            {site}
+          </div>
+        ))}
+      </div>
     </APIProvider>
   )
 }
