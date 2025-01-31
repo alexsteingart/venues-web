@@ -10,7 +10,9 @@ import { useState, useCallback } from 'react';
 import { kebabCase } from 'lodash';
 
 
-const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Record<string, any> }>) => {
+const MarkerWithInfoWindow = (
+  { venue, visible }: Readonly<{ venue: Record<string, any>, visible: boolean }>
+) => {
   if(!venue.lat || !venue.lng) return;
 
   const [markerRef, marker] = useAdvancedMarkerRef();
@@ -25,12 +27,12 @@ const MarkerWithInfoWindow = ({ venue }: Readonly<{ venue: Record<string, any> }
 
   return (
     <>
-      <AdvancedMarker
+      {visible && <AdvancedMarker
         ref={markerRef}
         position={{lat: venue.lat, lng: venue.lng}}
         title={venue.venue_name}
         onClick={handleMarkerClick}
-      />
+      />}
       {infoWindowShown && (
         <InfoWindow anchor={marker} onClose={handleClose}>
           <div className='text-black'>
@@ -85,14 +87,13 @@ export default function VenuesMap({
         mapId={gmap_id}
          defaultZoom={13}
          defaultCenter={ { lat: 40.727094, lng: -73.946729 } }>
-         {venues.map( (venue, index) => {
-             return sites.has(venue.site) && (
-              <MarkerWithInfoWindow
+         {venues.map( (venue, index) => (
+             <MarkerWithInfoWindow
                 key={index}
                 venue={venue}
+                visible={sites.has(venue.site)}
               />
-            )
-         })}
+         ))}
       </Map>
       <div className='fixed left-0 top-0 bg-white p-2'>
         {Array.from(siteSet).sort().map((site, index) => (
